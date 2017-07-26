@@ -10,24 +10,14 @@ public enum EnemyType {
     FastThenSlow//先加速后缓行的敌人
 }
 
-
-
 public class EnemySpawner : MonoBehaviour {
 
 
     #region singleton
-    private EnemySpawner() {
-    }
-    static private EnemySpawner _instance;
-    static public EnemySpawner Instance {
+    private EnemySpawner() {}
+    private static EnemySpawner _instance = null;
+    public static EnemySpawner Instance {
         get {
-
-            bool flag = _instance == null ? true : false;
-            Debug.Log("why : " + flag);
-
-            if (_instance == null) {
-                _instance = new EnemySpawner();
-            }
             return _instance;
         }
     }
@@ -40,7 +30,6 @@ public class EnemySpawner : MonoBehaviour {
     public GameObject fastThenSlowPrefab;
     #endregion 
 
-    private Vector3 spwanPosition;//实例化敌人的坐标
     private Vector3 offset;//玩家和敌人之间的距离
     private GameObject player;//根据当前玩家的位置来决定spwanPosition
 
@@ -52,6 +41,11 @@ public class EnemySpawner : MonoBehaviour {
 
     //计时器,用于设定生成怪物的时间
     private Clock clock = new Clock();
+
+
+    private void Awake() {
+        _instance = this;
+    }
 
 
     private void Start() {
@@ -119,9 +113,6 @@ public class EnemySpawner : MonoBehaviour {
         if(currentEnemyNum > 0) { 
             currentEnemyNum--;
             isReady = true;
-            //if (currentEnemyNum == 0)//画面中已经没有怪物
-            //isReady = true;
-            //Debug.Log(currentEnemyNum < maxEnemyNum);
         }
     }
 }

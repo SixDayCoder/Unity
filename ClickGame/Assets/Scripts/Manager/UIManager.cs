@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour {
 
-    private UIManager() {}
-    static private UIManager _instance = null;
-    static public UIManager Instance {
+    #region singleton
+    private UIManager() {
+    }
+    private static UIManager _instance = null;
+    public  static UIManager Instance {
         get {
-            if (_instance == null) {
-                _instance = new UIManager();
-                return _instance;
-            }
             return _instance;
         }
+    }
+    #endregion
+
+    private void Awake() {
+        _instance = this;
     }
 
     public void ShowScorePanel(int score) {

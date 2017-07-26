@@ -4,8 +4,21 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    #region singleton
+    private static AudioManager _instance = null;
+    public static AudioManager Instance {
+        get {
+            return _instance;
+        }
+    }
+    #endregion
+
+
+    private void Awake() {
+        _instance = this;
+    }
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
