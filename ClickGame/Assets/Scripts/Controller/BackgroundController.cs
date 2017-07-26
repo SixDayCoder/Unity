@@ -21,14 +21,12 @@ public class BackgroundController : MonoBehaviour {
     private void Start() {
         singleWidth = 10.0f;
         totalWidth = singleWidth * 3;
-        Debug.Log(Mathf.RoundToInt(15.5f / totalWidth));
         startPosition = transform.position;
     }
 
     private void Update() {
         float distance = Camera.main.transform.position.x - startPosition.x;
         int n = Mathf.FloorToInt(distance / totalWidth + 0.5f);
-        Debug.Log(string.Format("n : {0} , distance : {1}", n, distance));
         Vector3 position = startPosition;
         position.x += + n * totalWidth;
         transform.position = position;

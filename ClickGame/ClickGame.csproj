@@ -78,10 +78,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Common\Clock.cs" />
     <Compile Include="Assets\Scripts\Controller\BackgroundController.cs" />
     <Compile Include="Assets\Scripts\Controller\CamreaController.cs" />
-    <Compile Include="Assets\Scripts\Controller\PlayController.cs" />
-    <Compile Include="Assets\Scripts\Controller\ScoreController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyBase.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\Enemy\NormalEnemy.cs" />
+    <Compile Include="Assets\Scripts\Manager\AudioManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\ScoreManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\TagManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
