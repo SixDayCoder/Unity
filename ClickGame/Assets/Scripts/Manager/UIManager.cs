@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
 
@@ -15,12 +16,16 @@ public class UIManager : MonoBehaviour {
     }
     #endregion
 
+
+    private Text scoreText = null;
+
     private void Awake() {
         _instance = this;
+        scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
     }
 
     public void ShowScorePanel(int score) {
-
+        scoreText.text = "Score : " + score;
     }
 
 

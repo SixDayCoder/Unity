@@ -66,17 +66,14 @@ public class EnemySpawner : MonoBehaviour {
         if ( IsReady() && currentEnemyNum < maxEnemyNum) {
 
             //生成敌人
-
-            int type = Random.Range(0, 3);
-
-            type = 0;
-
+            EnemyType type = (EnemyType)Random.Range(0, 4);
             GameObject prefab = null;
+
             switch (type) {
-                case 0: prefab = normalPrefab;break;
-                case 1: prefab = slowPrefab; break;
-                case 2: prefab = fastPrefab; break;
-                case 3: prefab = fastThenSlowPrefab; break;
+                case EnemyType.Normal: prefab = normalPrefab;break;
+                case EnemyType.Slow: prefab = slowPrefab; break;
+                case EnemyType.Fast: prefab = fastPrefab; break;
+                case EnemyType.FastThenSlow: prefab = fastThenSlowPrefab; break;
                 default: break;
             }
 

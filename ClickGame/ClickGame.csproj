@@ -83,7 +83,10 @@
     <Compile Include="Assets\Scripts\Controller\CamreaController.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyBase.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
+    <Compile Include="Assets\Scripts\Enemy\FastEnemy.cs" />
+    <Compile Include="Assets\Scripts\Enemy\FastThenSlowEnemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\NormalEnemy.cs" />
+    <Compile Include="Assets\Scripts\Enemy\SlowEnemy.cs" />
     <Compile Include="Assets\Scripts\Manager\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Manager\ScoreManager.cs" />
     <Compile Include="Assets\Scripts\Manager\TagManager.cs" />
