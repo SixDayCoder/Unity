@@ -1,5 +1,5 @@
 ManifestFileVersion: 0
-CRC: 3218400581
+CRC: 2883528608
 Hashes:
   AssetFileHash:
     serializedVersion: 2
@@ -16,6 +16,8 @@ ClassTypes:
 - Class: 48
   Script: {instanceID: 0}
 Assets:
+- Assets/Texture/Texture0.jpg
 - Assets/Materials/Box.mat
+- Assets/Shaders/MixTexture.shader
 - Assets/Texture/Texture1.jpg
 Dependencies: []

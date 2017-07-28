@@ -1,13 +1,13 @@
 ManifestFileVersion: 0
-CRC: 485288827
+CRC: 1535546975
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
-      Name: prefab/cubewall.unity3d
+      Name: prefab/spherewall.unity3d
       Dependencies:
         Dependency_0: share.unity3d
     Info_1:
-      Name: prefab/spherewall.unity3d
+      Name: prefab/cubewall.unity3d
       Dependencies:
         Dependency_0: share.unity3d
     Info_2:

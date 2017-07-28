@@ -8,7 +8,7 @@ public class BuildAssetBundle{
 
     [MenuItem("AssetBundle/Build All AssetBundle")]
     static void BuildAllAssetBundle() {
-        //BuildPipeline.BuildAssetBundles();
+
         string path = "AssetBundles";//相对目录,和Asset同级
         if (!Directory.Exists(path)) {
             Directory.CreateDirectory(path);
@@ -18,6 +18,8 @@ public class BuildAssetBundle{
         //None使用LZMA算法压缩,被压缩的包相比LZ4更多,但是解压时间更久,加载时间更久，解压是必须整体解压
         //ChunkBasedCompressor LZ4压缩 可以指定加载具体的资源而无需全部解压
     }
+
+
     /*
      * CubeWall和SphereWall都引用了同一套贴图和材质,直接打包那么会重复
      * 最好是依赖打包，把公用的贴图和材质打包,这样会减少内存 

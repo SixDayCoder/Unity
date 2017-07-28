@@ -6,8 +6,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 public class LoadFromFile : MonoBehaviour {
-
-
     /*
      * 推荐的方式
      * 1.经常需要更新的资源打包
@@ -15,79 +13,76 @@ public class LoadFromFile : MonoBehaviour {
      * 3.使用UnityWebRequest的方式从远端获取,使用AssetBundleManifest增加可控性
      * 4.如果share的文件很多,而我只想获得x的依赖,那么使用GetAllDependence的方式先加载
      */
-
     private string sharePath = "AssetBundles/share.unity3d";
     private string cubePath = "AssetBundles/prefab/cubewall.unity3d";
-    
+
+    private AssetBundleManifest MainManifest = null;
+
 
     void Start () {
-        //AssetLoadFromFile(); 
-        //StartCoroutine(AssetLoadFromMemoryAsync()); 
-        //AssetLoadFromMemory();
-        //StartCoroutine(LoadFromCacheOrDownload());
-        //StartCoroutine(WebRequest());
-        LoadWithManifest();
+        StartCoroutine(GetMainManifest());//获取MainManifest
+        StartCoroutine(LoadAsset("prefab/cubewall.unity3d", "CubeWall"));
 	}
 
 
-    void AssetLoadFromFile() {//也有异步的方法
-        //相对路径
-        //AssetBundle share = AssetBundle.LoadFromFile(sharePath);
-        //加载是被加载到内存当中
-        //AssetBundle ab = AssetBundle.LoadFromFile(cubePath);
-        //加载assetbundle,如果没有加载它的依赖是不能正确显示cubeWall的, 不存在加载的先后顺序,在LoadAsset之前即可
-        //GameObject cubeWall = ab.LoadAsset<GameObject>("CubeWall");//获取prefab
-        //Instantiate(cubeWall, Vector3.zero, Quaternion.identity);//实例化prefab
-    }
+    IEnumerator GetMainManifest() {
 
-    void AssetLoadFromMemory() {
-        AssetBundle share = AssetBundle.LoadFromMemory(File.ReadAllBytes(sharePath));
-        AssetBundle ab = AssetBundle.LoadFromMemory(File.ReadAllBytes(cubePath));
-        GameObject cubeWall = ab.LoadAsset<GameObject>("CubeWall");//获取prefab
-        Instantiate(cubeWall, Vector3.zero, Quaternion.identity);//实例化prefab
-    }
+        string url = @"http://localhost/AssetBundles/AssetBundles";
 
-    IEnumerator AssetLoadFromMemoryAsync() {
-        //从内存中异步加载,如果服务器使用的tcp协议传输的是byte数组到本地,那么可以使用这个方法读取AssetBundle到内存
-        AssetBundleCreateRequest request = AssetBundle.LoadFromMemoryAsync(File.ReadAllBytes(sharePath));
-        yield return request;//等待加载完share
-
-
-        request = AssetBundle.LoadFromMemoryAsync(File.ReadAllBytes(cubePath));
-        yield return request;//等待加载完request
-
-        //加载完毕,可以使用
-        AssetBundle ab = request.assetBundle;
-        GameObject cubeWall = ab.LoadAsset<GameObject>("CubeWall");//获取prefab
-        Instantiate(cubeWall, Vector3.zero, Quaternion.identity);//实例化prefab
-    }
-
-    //WWW,被UnityWenRequest所代替
-    IEnumerator LoadFromCacheOrDownload() {
-        while (!Caching.ready)
-            yield return null;
-
-        //若第一次下载,下载到cache中,之后从cache中取,注意使用www的时候要完整路径
-        WWW www = WWW.LoadFromCacheOrDownload(@"file://E:\UnityDemos\AssetBundle\AssetBundles\share.unity3d", 1);
-        yield return www;
-
-        if (string.IsNullOrEmpty(www.error)) {
-            www = WWW.LoadFromCacheOrDownload(@"file://E:\UnityDemos\AssetBundle\AssetBundles\prefab\cubewall.unity3d", 1);
-            yield return www;
-
-            //加载完毕,可以使用,如果是远程加载,换成服务器的url就可以
-            AssetBundle ab = www.assetBundle;
-            GameObject cubeWall = ab.LoadAsset<GameObject>("CubeWall");//获取prefab
-            Instantiate(cubeWall, Vector3.zero, Quaternion.identity);//实例化prefab
-
+        UnityWebRequest request = UnityWebRequest.GetAssetBundle(url);
+        yield return request.Send();
+        if (string.IsNullOrEmpty(request.error)) {
+            AssetBundle assetBundle = (request.downloadHandler as DownloadHandlerAssetBundle).assetBundle;
+            MainManifest = assetBundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
         }
         else {
-            Debug.Log(www.error);
-            yield break;//相当于void的return
+            //LogError()
+            yield break;
         }
-
     }
 
+
+    IEnumerator LoadDependencies(string assetName) {
+
+        string[] dependencies = MainManifest.GetAllDependencies(assetName);
+
+        foreach (var name in dependencies) {
+            string url = "http://localhost/AssetBundles/" + name;
+            UnityWebRequest request = UnityWebRequest.GetAssetBundle(url);
+            yield return request.Send();
+            if (string.IsNullOrEmpty(request.error)) {
+                AssetBundle assetBundle = (request.downloadHandler as DownloadHandlerAssetBundle).assetBundle;
+            }
+            else {
+                //LogError()
+                yield break;
+            }
+        }
+    }
+
+    IEnumerator LoadAsset(string assetName, string objName) {
+
+        while (MainManifest == null)
+            yield return null;
+        StartCoroutine(LoadDependencies(assetName));
+
+        string url = "http://localhost/AssetBundles/" + assetName;
+        UnityWebRequest request = UnityWebRequest.GetAssetBundle(url);
+        yield return request.Send();//发送http请求
+
+        if (string.IsNullOrEmpty(request.error)) {
+            AssetBundle assetBundle = (request.downloadHandler as DownloadHandlerAssetBundle).assetBundle;
+            AssetBundle ab = (request.downloadHandler as DownloadHandlerAssetBundle).assetBundle;
+            GameObject go = ab.LoadAsset<GameObject>(objName);
+            Instantiate(go, Vector3.zero, Quaternion.identity);//实例化prefab
+        }
+        else {
+            //LogError()
+            yield break;
+        }
+    }
+
+    /*
     //Unity5.3及以上推荐的方式
     IEnumerator WebRequest() {
         string shareURL = @"http://localhost/AssetBundles/share.unity3d";
@@ -99,6 +94,7 @@ public class LoadFromFile : MonoBehaviour {
 
         request = UnityWebRequest.GetAssetBundle(cubeURL);
         yield return request.Send();//发送http请求
+        
         AssetBundle ab = (request.downloadHandler as DownloadHandlerAssetBundle).assetBundle;
 
         GameObject cubeWall = ab.LoadAsset<GameObject>("CubeWall");//获取prefab
@@ -113,19 +109,18 @@ public class LoadFromFile : MonoBehaviour {
         AssetBundleManifest manifest = manifestAssetBundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
 
         //得到了本项目中所有AssetBundle的名字
-        string[] assetBundleNames = manifest.GetAllAssetBundles();
+        //string[] assetBundleNames = manifest.GetAllAssetBundles();
+        //想加载某个AssetBundle,加载它所有的依赖AssetBundle,这些依赖关系存在于主manifest里边
 
-        //想加载某个AssetBundle,加载它所有的依赖AssetBundle,这些依赖关系存在于manifest里边
-        
-        //加载了被共享的AssetBundle
-        foreach(var name in assetBundleNames) {
-            if (name =="share.unity3d") {
-                AssetBundle.LoadFromFile("AssetBundles/" + name);
-                break;
-            }
+        //加载所有依赖
+        string[] dependencies = manifest.GetAllDependencies("prefab/cubewall.unity3d");
+
+        foreach(var name in dependencies) {
+            AssetBundle.LoadFromFile("AssetBundles/" + name);
         }
-
+        //加载所有依赖
         AssetBundle ab = AssetBundle.LoadFromFile(cubePath);
         Instantiate(ab.LoadAsset<GameObject>("CubeWall"), Vector3.zero, Quaternion.identity);
     }
+    */
 }
