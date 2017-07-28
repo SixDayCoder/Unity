@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -7,16 +8,27 @@ using UnityEngine.Networking;
 public class LoadFromFile : MonoBehaviour {
 
 
+    /*
+     * 推荐的方式
+     * 1.经常需要更新的资源打包
+     * 2.在经常需要更新的资源中,被共同依赖的单独打包到share当中  share/material  share/audioclip share/lua 的目录结构
+     * 3.使用UnityWebRequest的方式从远端获取,使用AssetBundleManifest增加可控性
+     * 4.如果share的文件很多,而我只想获得x的依赖,那么使用GetAllDependence的方式先加载
+     */
+
     private string sharePath = "AssetBundles/share.unity3d";
     private string cubePath = "AssetBundles/prefab/cubewall.unity3d";
-    // Use this for initialization
+    
+
     void Start () {
         //AssetLoadFromFile(); 
         //StartCoroutine(AssetLoadFromMemoryAsync()); 
         //AssetLoadFromMemory();
         //StartCoroutine(LoadFromCacheOrDownload());
-        StartCoroutine(WebRequest());
+        //StartCoroutine(WebRequest());
+        LoadWithManifest();
 	}
+
 
     void AssetLoadFromFile() {//也有异步的方法
         //相对路径
@@ -92,5 +104,28 @@ public class LoadFromFile : MonoBehaviour {
         GameObject cubeWall = ab.LoadAsset<GameObject>("CubeWall");//获取prefab
         Instantiate(cubeWall, Vector3.zero, Quaternion.identity);//实例化prefab
     }
-	
+
+
+    void LoadWithManifest() {
+        
+        //主manifest文件,从这个文件中可以获取本项目所有的AssetBundle的信息,这些信息存储在manifest里边
+        AssetBundle manifestAssetBundle = AssetBundle.LoadFromFile("AssetBundles/AssetBundles");
+        AssetBundleManifest manifest = manifestAssetBundle.LoadAsset<AssetBundleManifest>("AssetBundleManifest");
+
+        //得到了本项目中所有AssetBundle的名字
+        string[] assetBundleNames = manifest.GetAllAssetBundles();
+
+        //想加载某个AssetBundle,加载它所有的依赖AssetBundle,这些依赖关系存在于manifest里边
+        
+        //加载了被共享的AssetBundle
+        foreach(var name in assetBundleNames) {
+            if (name =="share.unity3d") {
+                AssetBundle.LoadFromFile("AssetBundles/" + name);
+                break;
+            }
+        }
+
+        AssetBundle ab = AssetBundle.LoadFromFile(cubePath);
+        Instantiate(ab.LoadAsset<GameObject>("CubeWall"), Vector3.zero, Quaternion.identity);
+    }
 }
