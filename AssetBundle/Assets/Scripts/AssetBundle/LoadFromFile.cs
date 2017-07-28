@@ -32,12 +32,12 @@ public class LoadFromFile : MonoBehaviour {
 
     void AssetLoadFromFile() {//也有异步的方法
         //相对路径
-        AssetBundle share = AssetBundle.LoadFromFile(sharePath);
+        //AssetBundle share = AssetBundle.LoadFromFile(sharePath);
         //加载是被加载到内存当中
-        AssetBundle ab = AssetBundle.LoadFromFile(cubePath);
+        //AssetBundle ab = AssetBundle.LoadFromFile(cubePath);
         //加载assetbundle,如果没有加载它的依赖是不能正确显示cubeWall的, 不存在加载的先后顺序,在LoadAsset之前即可
-        GameObject cubeWall = ab.LoadAsset<GameObject>("CubeWall");//获取prefab
-        Instantiate(cubeWall, Vector3.zero, Quaternion.identity);//实例化prefab
+        //GameObject cubeWall = ab.LoadAsset<GameObject>("CubeWall");//获取prefab
+        //Instantiate(cubeWall, Vector3.zero, Quaternion.identity);//实例化prefab
     }
 
     void AssetLoadFromMemory() {
