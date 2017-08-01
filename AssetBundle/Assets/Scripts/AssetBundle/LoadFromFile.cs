@@ -13,8 +13,6 @@ public class LoadFromFile : MonoBehaviour {
      * 3.使用UnityWebRequest的方式从远端获取,使用AssetBundleManifest增加可控性
      * 4.如果share的文件很多,而我只想获得x的依赖,那么使用GetAllDependence的方式先加载
      */
-    private string sharePath = "AssetBundles/share.unity3d";
-    private string cubePath = "AssetBundles/prefab/cubewall.unity3d";
 
     private AssetBundleManifest MainManifest = null;
 
@@ -64,6 +62,7 @@ public class LoadFromFile : MonoBehaviour {
 
         while (MainManifest == null)
             yield return null;
+
         StartCoroutine(LoadDependencies(assetName));
 
         string url = "http://localhost/AssetBundles/" + assetName;
