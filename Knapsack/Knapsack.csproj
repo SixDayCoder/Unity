@@ -76,23 +76,23 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>Assets\Plugins\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween43">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween43.dll</HintPath>
+    </Reference>
     <Reference Include="DOTween46">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween46.dll</HintPath>
     </Reference>
     <Reference Include="DOTween50">
       <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween50.dll</HintPath>
     </Reference>
-    <Reference Include="DOTween43">
-      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween43.dll</HintPath>
-    </Reference>
-    <Reference Include="DOTween">
-      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
-    </Reference>
     <Reference Include="DOTweenPro">
       <HintPath>Assets\Plugins\Demigiant\DOTweenPro\DOTweenPro.dll</HintPath>
-    </Reference>
-    <Reference Include="DemiLib">
-      <HintPath>Assets\Plugins\Demigiant\DemiLib\Core\DemiLib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -106,11 +106,13 @@
     <Compile Include="Assets\Scripts\DOTweenTest\Move.cs" />
     <Compile Include="Assets\Scripts\DOTweenTest\ShakeCamera.cs" />
     <Compile Include="Assets\Scripts\DOTweenTest\TextTween.cs" />
-    <Compile Include="Assets\Scripts\Knapsack\Item\Consume.cs" />
-    <Compile Include="Assets\Scripts\Knapsack\Item\Equipment.cs" />
-    <Compile Include="Assets\Scripts\Knapsack\Item\Item.cs" />
-    <Compile Include="Assets\Scripts\Knapsack\Item\Material.cs" />
-    <Compile Include="Assets\Scripts\Knapsack\Item\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Knapsack\Data\Consume.cs" />
+    <Compile Include="Assets\Scripts\Knapsack\Data\Equipment.cs" />
+    <Compile Include="Assets\Scripts\Knapsack\Data\Item.cs" />
+    <Compile Include="Assets\Scripts\Knapsack\Data\Material.cs" />
+    <Compile Include="Assets\Scripts\Knapsack\Data\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Knapsack\Manager\GridManager.cs" />
+    <Compile Include="Assets\Scripts\Knapsack\Manager\KnapsackManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />
