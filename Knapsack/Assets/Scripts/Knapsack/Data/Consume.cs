@@ -2,16 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class Consume : Item{
 
-    public uint HP {
-        get; set;
-    }
-
-    public uint MP {
-        get; set;
-    }
+    public uint HP;
+    public uint MP;
 
     public Consume(string id,      string name,
                    EItemType type, EQuality quality,

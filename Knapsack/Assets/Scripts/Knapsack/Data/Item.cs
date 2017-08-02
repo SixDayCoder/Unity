@@ -23,60 +23,32 @@ public enum EQuality {
 /// <summary>
 /// 物品基类
 /// </summary>
-
-[System.Serializable]
 public class Item {
 
-    public string ID{
-        get; set;
-    }
-
-    public string Name {
-        get; set;
-    }
-
-    public EItemType ItemType {
-        get; set;
-    }
-
-    public EQuality Quality {
-        get; set;
-    }
-    
-    public uint Capacity {
-        get; set;
-    }
-
-    public string Description {
-        get; set;
-    }
-
-    public uint BuyPrice {
-        get; set;
-    }
-
-    public uint SellPrice {
-        get; set;
-    }
-
-    public string Icon {
-        get; set;
-    }
+    public string id;
+    public string name;
+    public EItemType itemtype;
+    public EQuality quality;
+    public uint capacity;
+    public string description;
+    public uint buyprice;
+    public uint sellprice;
+    public string icon;
 
     public Item() {
 
     }
 
     public Item(string id, string name, EItemType type, EQuality quality, string des, uint capacity, uint buy, uint sell, string icon) {
-        this.ID = id;
-        this.Name = name;
-        this.ItemType = type;
-        this.Quality = quality;
-        this.Description = des;
-        this.Capacity = capacity;
-        this.BuyPrice = buy;
-        this.SellPrice = sell;
-        this.Icon = icon;
+        this.id = id;
+        this.name = name;
+        this.itemtype = type;
+        this.quality = quality;
+        this.description = des;
+        this.capacity = capacity;
+        this.buyprice = buy;
+        this.sellprice = sell;
+        this.icon = icon;
     }
 
 }

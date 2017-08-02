@@ -11,27 +11,21 @@ public class Weapon : Item {
                   string des,     uint capacity, 
                   uint buy,       uint sell, 
                   string icon,    uint strength, 
-                  uint agility,   uint intelligence, 
+                  uint agility,   uint intellect, 
                   uint damage) :
                   base(id, name, type, quality, des, capacity, buy, sell, icon)
     {
-        this.Strength = strength;
-        this.Agility = agility;
-        this.Intelligence = intelligence;
-        this.Damage = damage;
+        this.strength = strength;
+        this.agility = agility;
+        this.intellect = intellect;
+        this.damage = damage;
     }
 
-    public uint Strength {
-        get; set;
-    }
-    public uint Agility {
-        get; set;
-    }
-    public uint Intelligence {
-        get; set;
-    }
-    public uint Damage {
-        get; set;
-    }
+    public uint strength;
+    public uint agility;
+    public uint intellect;
+    public uint damage;
+
+
 
 }

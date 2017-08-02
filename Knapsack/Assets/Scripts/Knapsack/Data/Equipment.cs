@@ -12,27 +12,12 @@ public enum EEquipmentType {
 }
 
 public class Equipment : Item{
-    
-    public EEquipmentType EquipmentType {
-        get; set;
-    }
 
-    public uint Strength {
-        get; set;
-    }
-
-    public uint Agility {
-        get; set;
-    }
-
-    public uint Intelligence {
-        get; set;
-    }
-
-    public uint Defend {
-        get; set;
-    }
-
+    public EEquipmentType equipmentType;
+    public uint strength;
+    public uint agility;
+    public uint intellect;
+    public uint defend;
 
 
     public Equipment(string id,        string name,
@@ -45,10 +30,11 @@ public class Equipment : Item{
 
                      base(id, name, type, quality, des, capacity, buy, sell, icon)
     {
-        this.EquipmentType = equimentType;
-        this.Strength = strength;
-        this.Agility = agility;
-        this.Defend = defend;
+        this.equipmentType = equimentType;
+        this.strength = strength;
+        this.agility = agility;
+        this.intellect = intellect;
+        this.defend = defend;
     }
 
 }

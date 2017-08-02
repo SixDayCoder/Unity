@@ -102,10 +102,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\DOTweenTest\HideButton.cs" />
-    <Compile Include="Assets\Scripts\DOTweenTest\Move.cs" />
-    <Compile Include="Assets\Scripts\DOTweenTest\ShakeCamera.cs" />
-    <Compile Include="Assets\Scripts\DOTweenTest\TextTween.cs" />
     <Compile Include="Assets\Scripts\Knapsack\Data\Consume.cs" />
     <Compile Include="Assets\Scripts\Knapsack\Data\Equipment.cs" />
     <Compile Include="Assets\Scripts\Knapsack\Data\Item.cs" />

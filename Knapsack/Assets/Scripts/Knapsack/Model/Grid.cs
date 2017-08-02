@@ -30,8 +30,8 @@ public class Grid : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
 
     public void IncNumber(uint amount) {
         if (!IsEmpty()) {
-            if(item.Capacity + amount <= 99) {
-                item.Capacity += amount;
+            if(item.capacity+ amount <= 99) {
+                item.capacity += amount;
                 //提示该物品数量已达到上限
             }
         }
@@ -45,8 +45,7 @@ public class Grid : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
             this.item = item;
             string path = "Icons/Weapon/W_Axe001";
             itemIcon.sprite = Resources.Load(path, typeof(Sprite)) as Sprite;
-            //itemIcon.sprite = Resources.Load(item.Icon, typeof(Sprite)) as Sprite;
-            itemNumber.text = item.Capacity.ToString();
+            itemNumber.text = item.capacity.ToString();
         }
         else {
             //LogError
@@ -74,7 +73,7 @@ public class Grid : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
                                                                     Camera.main.WorldToScreenPoint(rectTransform.position),
                                                                     Camera.main, out position);
             DescriptionPanel.Instance.SetPosition(position + bias);
-            //DisplayInformation
+            DescriptionPanel.Instance.DisplayItemInformation(item);
         }
     }
 

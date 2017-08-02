@@ -35,9 +35,9 @@ public class DescriptionPanel : MonoBehaviour {
 
     public void DisplayItemInformation(Item item) {
 
-        SetCommonText(item.Quality, item.Name, item.Description, item.SellPrice);
+        SetCommonText(item.quality, item.name, item.description, item.sellprice);
 
-        switch (item.ItemType) {
+        switch (item.itemtype) {
             case EItemType.Consume: {
 
             }
