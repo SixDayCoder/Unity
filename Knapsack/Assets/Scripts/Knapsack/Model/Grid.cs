@@ -2,24 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System;
 
+public class Grid : MonoBehaviour, IPointerEnterHandler{
 
-public class Grid : MonoBehaviour {
-
-    public Image descriptionPanel;//鼠标放在图片上时显示的物品描述信息
+    public Canvas UIRoot;
+    public Image  DescriptionPanel;//鼠标放在图片上时显示的物品描述信息
 
 
     private Item item = null;//当前格子存放的item的信息
     private Image itemIcon;//item icon ui
     private Text itemNumber;//item number ui
+    private RectTransform rectTransform;//grid的rectTransform
 
     private void Start() {
         //初始化itemIcon和itemNumber的引用
-        foreach(var image in gameObject.GetComponentsInChildren<Image>(true)) {
+        foreach(var image in GetComponentsInChildren<Image>(true)) {
             if (image.name == "ItemIcon")
                 itemIcon = image.GetComponent<Image>();
         }
-        itemNumber = gameObject.GetComponentInChildren<Text>();
+        itemNumber = GetComponentInChildren<Text>();
+        rectTransform = GetComponent<RectTransform>();
     }
 
     public bool IsEmpty() {
@@ -61,5 +65,15 @@ public class Grid : MonoBehaviour {
         else {
             //LogError
         }
-    }    
+    }
+
+    public void OnPointerEnter(PointerEventData eventData) {
+        Vector2 bias = new Vector2(100, -150);
+        Vector2 position;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(UIRoot.transform as RectTransform,  
+                                                                Camera.main.WorldToScreenPoint(rectTransform.position),
+                                                                Camera.main,    out position);
+        
+        DescriptionPanel.rectTransform.anchoredPosition = position + bias;
+    }
 }
