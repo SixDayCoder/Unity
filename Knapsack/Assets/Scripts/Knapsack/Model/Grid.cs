@@ -5,11 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-public class Grid : MonoBehaviour, IPointerEnterHandler{
+public class Grid : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
 
     public Canvas UIRoot;
-    public Image  DescriptionPanel;//鼠标放在图片上时显示的物品描述信息
-
 
     private Item item = null;//当前格子存放的item的信息
     private Image itemIcon;//item icon ui
@@ -68,12 +66,19 @@ public class Grid : MonoBehaviour, IPointerEnterHandler{
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        Vector2 bias = new Vector2(100, -150);
-        Vector2 position;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(UIRoot.transform as RectTransform,  
-                                                                Camera.main.WorldToScreenPoint(rectTransform.position),
-                                                                Camera.main,    out position);
-        
-        DescriptionPanel.rectTransform.anchoredPosition = position + bias;
+
+        if (!IsEmpty()) {
+            Vector2 bias = new Vector2(100, -150);
+            Vector2 position;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(UIRoot.transform as RectTransform,
+                                                                    Camera.main.WorldToScreenPoint(rectTransform.position),
+                                                                    Camera.main, out position);
+            DescriptionPanel.Instance.SetPosition(position + bias);
+            //DisplayInformation
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        DescriptionPanel.Instance.InitPosition();
     }
 }

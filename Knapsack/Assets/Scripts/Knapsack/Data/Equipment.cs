@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public enum EEquipmentType {
     Head,//头盔
     Necklace,//项链

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-
+[System.Serializable]
 public enum EItemType {
     Consume,
     Weapon,
@@ -11,6 +11,8 @@ public enum EItemType {
     Material
 }
 
+
+[System.Serializable]
 public enum EQuality {
     Normal,//普通
     Rare,//稀有
@@ -21,6 +23,8 @@ public enum EQuality {
 /// <summary>
 /// 物品基类
 /// </summary>
+
+[System.Serializable]
 public class Item {
 
     public string ID{
@@ -59,7 +63,6 @@ public class Item {
         get; set;
     }
 
-
     public Item() {
 
     }
@@ -75,6 +78,5 @@ public class Item {
         this.SellPrice = sell;
         this.Icon = icon;
     }
-
 
 }
