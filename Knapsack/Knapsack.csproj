@@ -111,8 +111,10 @@
     <Compile Include="Assets\Scripts\Knapsack\Data\Item.cs" />
     <Compile Include="Assets\Scripts\Knapsack\Data\Material.cs" />
     <Compile Include="Assets\Scripts\Knapsack\Data\Weapon.cs" />
-    <Compile Include="Assets\Scripts\Knapsack\Manager\GridManager.cs" />
     <Compile Include="Assets\Scripts\Knapsack\Manager\KnapsackManager.cs" />
+    <Compile Include="Assets\Scripts\Knapsack\Model\DescriptionPanel.cs" />
+    <Compile Include="Assets\Scripts\Knapsack\Model\Grid.cs" />
+    <Compile Include="Assets\Scripts\Knapsack\Model\Knapsack.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Demigiant\DOTween\DOTween.XML" />

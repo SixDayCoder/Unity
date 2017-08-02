@@ -5,7 +5,7 @@ using UnityEngine;
 public class Weapon : Item {
 
 
-    public Weapon(uint id,        string name, 
+    public Weapon(string id,      string name, 
                   EItemType type, EQuality quality, 
                   string des,     uint capacity, 
                   uint buy,       uint sell, 

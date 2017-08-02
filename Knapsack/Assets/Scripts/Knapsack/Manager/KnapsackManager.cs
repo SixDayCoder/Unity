@@ -2,34 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnapsackManager {
+public class KnapsackManager : MonoBehaviour {
 
-    #region singleton
-    private KnapsackManager() {}
-    private KnapsackManager _instance = null;
-    public KnapsackManager Instance {
-        get {
-            if (_instance == null)
-                _instance = new KnapsackManager();
-            return _instance;
+	// Use this for initialization
+	void Start () {
+		
+	}
+	// Update is called once per frame
+	void Update () {
+        if (Input.GetKeyDown(KeyCode.Space)) {
+            Knapsack.Instance.AddItem(new Item());
         }
-    }
-    #endregion
-
-    private GameObject FindFirstEmptyGrid() {
-        return new GameObject();
-    }
-
-    public void AddItem() {
-        
-    }
-
-    public void RemoveItem() {
-
-    }
-
-    public void LoadItems() {//从数据库中获取json文件并解析
-
-    }
-
+	}
 }

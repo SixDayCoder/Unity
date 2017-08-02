@@ -12,7 +12,7 @@ public class Consume : Item{
         get; set;
     }
 
-    public Consume(uint id,        string name,
+    public Consume(string id,      string name,
                    EItemType type, EQuality quality,
                    string des,     uint capacity,
                    uint buy,       uint sell,

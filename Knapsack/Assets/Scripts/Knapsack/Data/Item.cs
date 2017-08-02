@@ -23,7 +23,7 @@ public enum EQuality {
 /// </summary>
 public class Item {
 
-    public uint ID{
+    public string ID{
         get; set;
     }
 
@@ -64,7 +64,7 @@ public class Item {
 
     }
 
-    public Item(uint id, string name, EItemType type, EQuality quality, string des, uint capacity, uint buy, uint sell, string icon) {
+    public Item(string id, string name, EItemType type, EQuality quality, string des, uint capacity, uint buy, uint sell, string icon) {
         this.ID = id;
         this.Name = name;
         this.ItemType = type;
