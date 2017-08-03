@@ -40,12 +40,6 @@ public class Knapsack {
         }
     }
 
-    public void AddItem(Item item, Grid grid) {//在指定Grid上添加item
-        if (grid.IsEmpty()) {
-            grid.AddItem(item);
-        }
-    }
-
     public void ExangeItem(Grid lhs, Grid rhs) {
         if(!lhs.IsEmpty() && !rhs.IsEmpty()) {
             Item litem = lhs.GetItem();
@@ -57,10 +51,6 @@ public class Knapsack {
             lhs.AddItem(ritem);
             rhs.AddItem(litem);
         }
-    }
-
-    public void RemoveItem() {
-
     }
 
     private void InitGridList() {

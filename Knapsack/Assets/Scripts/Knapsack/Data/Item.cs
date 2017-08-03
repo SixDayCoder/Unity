@@ -23,6 +23,8 @@ public enum EQuality {
 /// <summary>
 /// 物品基类
 /// </summary>
+
+[System.Serializable]
 public class Item {
 
     public string id;

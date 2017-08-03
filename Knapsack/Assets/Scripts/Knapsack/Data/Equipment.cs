@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public enum EEquipmentType {
     Head,//头盔
     Necklace,//项链
@@ -11,6 +12,8 @@ public enum EEquipmentType {
     Wear,//上衣
 }
 
+
+[System.Serializable]
 public class Equipment : Item{
 
     public EEquipmentType equipmentType;

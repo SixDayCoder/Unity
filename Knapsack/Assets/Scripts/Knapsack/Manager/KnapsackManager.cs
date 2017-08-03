@@ -1,14 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 public class KnapsackManager : MonoBehaviour {
 
     // Use this for initialization
-
-
-    private Weapon weapon;
-
+    /*
     private string json = @"{
     ""id""        	    :	""W_Axe001"",
 	""name""      	    :	""战斧"",
@@ -24,19 +22,26 @@ public class KnapsackManager : MonoBehaviour {
 	""intellect""	    :	1,
 	""damage""		    :	100
     }";
+    */
 
 	void Start () {
-        weapon =  JsonUtility.FromJson(json, typeof(Weapon)) as Weapon;
-        //Debug.Log(weapon.id);
-        //Debug.Log(weapon.name);
-        //Debug.Log(weapon.itemtype);
-        //Debug.Log(weapon.quality);
-        //Debug.Log(weapon.intellect);
+        StartCoroutine(DownLoadJson("http://localhost/json/weapon1.json"));
+        StartCoroutine(DownLoadJson("http://localhost/json/weapon2.json"));
 	}
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            Knapsack.Instance.AddItem(weapon);
+
+    IEnumerator DownLoadJson(string url) {
+        UnityWebRequest request = UnityWebRequest.Get(url);
+        yield return request.Send();
+
+        if (!request.isError) {
+            string json = request.downloadHandler.text;
+            Weapon w = JsonUtility.FromJson<Weapon>(json);
+            Debug.Log(w.description);
+            Knapsack.Instance.AddItem(w);
         }
-	}
+        else {
+            //LogError
+            yield return null;
+        }
+    }
 }

@@ -102,6 +102,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Common\JsonArray.cs" />
     <Compile Include="Assets\Scripts\Knapsack\Data\Consume.cs" />
     <Compile Include="Assets\Scripts\Knapsack\Data\Equipment.cs" />
     <Compile Include="Assets\Scripts\Knapsack\Data\Item.cs" />
