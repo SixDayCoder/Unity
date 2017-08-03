@@ -109,6 +109,7 @@
     <Compile Include="Assets\Scripts\Knapsack\Data\Weapon.cs" />
     <Compile Include="Assets\Scripts\Knapsack\Manager\KnapsackManager.cs" />
     <Compile Include="Assets\Scripts\Knapsack\Model\DescriptionPanel.cs" />
+    <Compile Include="Assets\Scripts\Knapsack\Model\DragItem.cs" />
     <Compile Include="Assets\Scripts\Knapsack\Model\Grid.cs" />
     <Compile Include="Assets\Scripts\Knapsack\Model\Knapsack.cs" />
   </ItemGroup>

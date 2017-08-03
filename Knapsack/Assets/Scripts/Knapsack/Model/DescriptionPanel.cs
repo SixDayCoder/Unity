@@ -43,8 +43,13 @@ public class DescriptionPanel : MonoBehaviour {
 
 
     #region show items information
+
+    public void SetVisable(bool flag) {
+        gameObject.SetActive(flag);
+    }
+
     public void DisplayItemInformation(Item item) {
-  
+        SetVisable(true);
         ClearText();
         SetCommonText(item.quality, item.name, item.description, item.sellprice);
 

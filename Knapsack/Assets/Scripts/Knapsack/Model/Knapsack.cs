@@ -20,7 +20,6 @@ public class Knapsack {
 
     private List<Grid> gridList = null;
 
-
     private Grid FindFirstEmptyGrid() {
         if (gridList != null) {
             foreach (var grid in gridList) {
@@ -41,23 +40,38 @@ public class Knapsack {
         }
     }
 
-    public void RemoveItem() {
-
+    public void AddItem(Item item, Grid grid) {//在指定Grid上添加item
+        if (grid.IsEmpty()) {
+            grid.AddItem(item);
+        }
     }
 
-    public void LoadItems() {//从服务器获取json文件并解析
+    public void ExangeItem(Grid lhs, Grid rhs) {
+        if(!lhs.IsEmpty() && !rhs.IsEmpty()) {
+            Item litem = lhs.GetItem();
+            Item ritem = rhs.GetItem();
+
+            lhs.RemoveItem();//删除之前的item
+            rhs.RemoveItem();//删除之前的item
+
+            lhs.AddItem(ritem);
+            rhs.AddItem(litem);
+        }
+    }
+
+    public void RemoveItem() {
 
     }
 
     private void InitGridList() {
         if (gridList == null) {
             gridList = new List<Grid>();
-            GameObject[] grids = GameObject.FindGameObjectsWithTag("Grid");//获得的Grid并不是按照面板上显示的层级的顺序,需要排序
+            List<GameObject> grids = new List<GameObject>(  GameObject.FindGameObjectsWithTag("Grid") );//获得的Grid并不是按照面板上显示的层级的顺序,需要排序
+            //按照gird的序号升序排序
+            grids.Sort((lhs, rhs) => int.Parse(lhs.transform.parent.name).CompareTo(int.Parse(rhs.transform.parent.name)));
             foreach (var grid in grids) {
                 gridList.Add(grid.GetComponent<Grid>());
             }
-            //按照gird的序号升序排序
-            gridList.Sort((lhs, rhs) => int.Parse(lhs.name).CompareTo (int.Parse(rhs.name)) );
         }
 
     }
