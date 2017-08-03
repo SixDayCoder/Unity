@@ -18,10 +18,6 @@ public class Knapsack {
     }
     #endregion
 
-
-
-
-
     private List<Grid> gridList = null;
 
 
@@ -40,7 +36,9 @@ public class Knapsack {
         if (grid == null) {
             //LogError(Knapsack is full)
         }
-        grid.AddItem(item);
+        else {
+            grid.AddItem(item);
+        }
     }
 
     public void RemoveItem() {

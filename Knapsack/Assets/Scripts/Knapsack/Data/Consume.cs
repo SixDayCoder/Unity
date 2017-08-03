@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Consume : Item{
 
-    public uint HP;
-    public uint MP;
+    public uint hp;
+    public uint mp;
 
     public Consume(string id,      string name,
                    EItemType type, EQuality quality,
@@ -15,8 +15,8 @@ public class Consume : Item{
                    uint mp) :
                    base(id, name, type, quality, des, capacity, buy, sell, icon)
     {
-        this.HP = hp;
-        this.MP = mp;
+        this.hp = hp;
+        this.mp = mp;
     }
 
 }

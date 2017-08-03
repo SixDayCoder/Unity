@@ -16,7 +16,7 @@ public class Grid : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
 
     private void Start() {
         //初始化itemIcon和itemNumber的引用
-        foreach(var image in GetComponentsInChildren<Image>(true)) {
+        foreach(var image in GetComponentsInChildren<Image>(true)) {//即便不可见也获取资源
             if (image.name == "ItemIcon")
                 itemIcon = image.GetComponent<Image>();
         }
@@ -43,9 +43,10 @@ public class Grid : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
     public void AddItem(Item item) {
         if (IsEmpty()) {
             this.item = item;
-            string path = "Icons/Weapon/W_Axe001";
+            string path = item.icon;
             itemIcon.sprite = Resources.Load(path, typeof(Sprite)) as Sprite;
             itemNumber.text = item.capacity.ToString();
+            itemIcon.GetComponent<RectTransform>().gameObject.SetActive(true);
         }
         else {
             //LogError
@@ -57,8 +58,12 @@ public class Grid : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler{
     }
 
     public void RemoveItem() {
-        if(!IsEmpty())
+        if (!IsEmpty()) { 
             item = null;
+            //itemIcon.GetComponent<RectTransform>().gameObject.SetActive(false);  设置不可见 
+            itemIcon.sprite = null;
+            itemNumber.text = "";
+        }   
         else {
             //LogError
         }
