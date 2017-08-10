@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AI\AILocomotion.cs" />
     <Compile Include="Assets\Scripts\AI\Steering.cs" />
+    <Compile Include="Assets\Scripts\AI\SteeringForSeek.cs" />
     <Compile Include="Assets\Scripts\AI\Vehicle.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
