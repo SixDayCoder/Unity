@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/SteeringForSeek.unity
+- path: Assets/Scenes/SteeringForEvade.unity
   isLoaded: 1
   isActive: 1

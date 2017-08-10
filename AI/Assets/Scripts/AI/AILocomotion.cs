@@ -74,7 +74,12 @@ public class AILocomotion : MonoBehaviour {
 
     //先fixedupdate->update
     //物理运动相关的操作放到FixedUpdate里边
+   
     private void FixedUpdate() {
+
+        if (CanComputeSteeringForce()) {
+             DoComputeSteeringForce();
+         }
 
         //计算速度
         velocity += acceleration * Time.fixedDeltaTime;
@@ -85,18 +90,14 @@ public class AILocomotion : MonoBehaviour {
         //计算AI角色的移动距离 
         moveDistance = velocity * Time.fixedDeltaTime;
 
+        //Debug.Log("velocity : " + velocity);
+        //Debug.Log("moveDistance : " + moveDistance);
+
         //执行Move动作
         DoMove();
 
         //播放行走动画
         //gameObject.animation.play("walk");
-    }
-
-    //每帧计算操作力
-    private void Update() {
-        if (CanComputeSteeringForce()) {
-            DoComputeSteeringForce();
-        }
     }
 
     //执行move操作改变物体的位置
@@ -142,7 +143,8 @@ public class AILocomotion : MonoBehaviour {
 
     //计算操作力
     private void DoComputeSteeringForce() {
-        //求合力
+        //求合力,每次计算都清空 
+        steeringForce = Vector3.zero;
         foreach (Steering s in steerings) {
             if (s.enabled) {
                 steeringForce += s.Force() * s.Weight;
