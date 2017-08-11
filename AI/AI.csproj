@@ -79,13 +79,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\AI\AILocomotion.cs" />
+    <Compile Include="Assets\Scripts\AI\Radar.cs" />
     <Compile Include="Assets\Scripts\AI\Steering.cs" />
     <Compile Include="Assets\Scripts\AI\SteeringEvade.cs" />
     <Compile Include="Assets\Scripts\AI\SteeringFollowPath.cs" />
     <Compile Include="Assets\Scripts\AI\SteeringForArrive.cs" />
+    <Compile Include="Assets\Scripts\AI\SteeringForCohesion.cs" />
+    <Compile Include="Assets\Scripts\AI\SteeringForCollisonAvoid.cs" />
     <Compile Include="Assets\Scripts\AI\SteeringForFlee.cs" />
     <Compile Include="Assets\Scripts\AI\SteeringForPursuit.cs" />
     <Compile Include="Assets\Scripts\AI\SteeringForSeek.cs" />
+    <Compile Include="Assets\Scripts\AI\SteeringForSeparation.cs" />
     <Compile Include="Assets\Scripts\AI\SteeringForWander.cs" />
     <Compile Include="Assets\Scripts\AI\Vehicle.cs" />
   </ItemGroup>
