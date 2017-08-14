@@ -78,20 +78,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AI\AILocomotion.cs" />
-    <Compile Include="Assets\Scripts\AI\Radar.cs" />
-    <Compile Include="Assets\Scripts\AI\Steering.cs" />
-    <Compile Include="Assets\Scripts\AI\SteeringEvade.cs" />
-    <Compile Include="Assets\Scripts\AI\SteeringFollowPath.cs" />
-    <Compile Include="Assets\Scripts\AI\SteeringForArrive.cs" />
-    <Compile Include="Assets\Scripts\AI\SteeringForCohesion.cs" />
-    <Compile Include="Assets\Scripts\AI\SteeringForCollisonAvoid.cs" />
-    <Compile Include="Assets\Scripts\AI\SteeringForFlee.cs" />
-    <Compile Include="Assets\Scripts\AI\SteeringForPursuit.cs" />
-    <Compile Include="Assets\Scripts\AI\SteeringForSeek.cs" />
-    <Compile Include="Assets\Scripts\AI\SteeringForSeparation.cs" />
-    <Compile Include="Assets\Scripts\AI\SteeringForWander.cs" />
-    <Compile Include="Assets\Scripts\AI\Vehicle.cs" />
+    <Compile Include="Assets\Scripts\Steering\AILocomotion.cs" />
+    <Compile Include="Assets\Scripts\Steering\Radar.cs" />
+    <Compile Include="Assets\Scripts\Steering\Steering.cs" />
+    <Compile Include="Assets\Scripts\Steering\SteeringEvade.cs" />
+    <Compile Include="Assets\Scripts\Steering\SteeringFollowPath.cs" />
+    <Compile Include="Assets\Scripts\Steering\SteeringForArrive.cs" />
+    <Compile Include="Assets\Scripts\Steering\SteeringForCohesion.cs" />
+    <Compile Include="Assets\Scripts\Steering\SteeringForCollisonAvoid.cs" />
+    <Compile Include="Assets\Scripts\Steering\SteeringForFlee.cs" />
+    <Compile Include="Assets\Scripts\Steering\SteeringForPursuit.cs" />
+    <Compile Include="Assets\Scripts\Steering\SteeringForSeek.cs" />
+    <Compile Include="Assets\Scripts\Steering\SteeringForSeparation.cs" />
+    <Compile Include="Assets\Scripts\Steering\SteeringForWander.cs" />
+    <Compile Include="Assets\Scripts\Steering\Vehicle.cs" />
+    <Compile Include="Assets\Scripts\Trigger\Sensor.cs" />
+    <Compile Include="Assets\Scripts\Trigger\SightSensor.cs" />
+    <Compile Include="Assets\Scripts\Trigger\SightTrigger.cs" />
+    <Compile Include="Assets\Scripts\Trigger\SoundSensor.cs" />
+    <Compile Include="Assets\Scripts\Trigger\SoundTrigger.cs" />
+    <Compile Include="Assets\Scripts\Trigger\Trigger.cs" />
+    <Compile Include="Assets\Scripts\Trigger\TriggerLimitedLifeTime.cs" />
+    <Compile Include="Assets\Scripts\Trigger\TriggerSystemManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
