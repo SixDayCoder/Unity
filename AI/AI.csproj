@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.6.0f3</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -78,6 +80,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\FSM\Monster.cs" />
+    <Compile Include="Assets\Scripts\FSM\MonsterAttackState.cs" />
+    <Compile Include="Assets\Scripts\FSM\MonsterDeadState.cs" />
+    <Compile Include="Assets\Scripts\FSM\MonsterIdleState.cs" />
+    <Compile Include="Assets\Scripts\FSM\MonsterMoveState.cs" />
+    <Compile Include="Assets\Scripts\FSM\State.cs" />
+    <Compile Include="Assets\Scripts\FSM\StateMachine.cs" />
     <Compile Include="Assets\Scripts\Steering\AILocomotion.cs" />
     <Compile Include="Assets\Scripts\Steering\Radar.cs" />
     <Compile Include="Assets\Scripts\Steering\Steering.cs" />
