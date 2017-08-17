@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/FSM/FSM.unity
+- path: Assets/Scenes/Behavior/Behavior.unity
   isLoaded: 1
   isActive: 1
