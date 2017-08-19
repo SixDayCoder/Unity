@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Flag : MonoBehaviour {
 
-    private Attacker owner = null;
+    public Attacker owner = null;
 
     private void OnTriggerEnter(Collider other) {
 
         if(other.GetComponent<Collider>().gameObject.tag == "Attacker") {
-
+        
             Attacker newOwner = other.gameObject.GetComponent<Attacker>();
             newOwner.isHandleFlag = true;
 
@@ -21,6 +21,7 @@ public class Flag : MonoBehaviour {
                 transform.parent = owner.transform;
             }
             else {
+                CTFGameManager.Instance.TakeFlag();
                 owner = newOwner;
                 transform.parent = owner.transform;
             }

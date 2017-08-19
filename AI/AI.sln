@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
+# Visual Studio 2015
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI", "AI.csproj", "{2345E0CD-82E7-1B0A-5F72-5A490FBED682}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI.Editor", "AI.Editor.csproj", "{834C4D02-864D-BC44-3052-F652B396A432}"
