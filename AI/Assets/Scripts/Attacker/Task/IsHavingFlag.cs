@@ -9,6 +9,7 @@ public class IsHavingFlag : Conditional {
 
     public override void OnAwake() {
         attacker = GetComponent<Attacker>();
+        
     }
 
     public override TaskStatus OnUpdate() {
