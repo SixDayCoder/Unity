@@ -20,7 +20,7 @@ public class SteeringForWander : Steering {
     private Vector3 circleTarget;
 
     private void Start() {
-
+       
         locomotion = GetComponent<AILocomotion>();
 
         //徘徊距离越大,物体旋转的角度越小

@@ -32,6 +32,9 @@ public class Defend : Action{
         navMeshAgent.speed = speed.Value;
         navMeshAgent.angularSpeed = angularSpeed.Value;
         navMeshAgent.destination = target.Value.position;
+
+        Debug.Log(viewDistance);
+        Debug.Log(speed);
     }
 
     //如果attacker在视野范围之内就去追,否则认为防御成功
@@ -42,6 +45,13 @@ public class Defend : Action{
 
         //如果Attacker在视野范围之内
         if (IsInSight()) {
+
+            Debug.Log("???");
+
+            if(navMeshAgent.destination  != target.Value.position) {
+                navMeshAgent.destination = target.Value.position;
+            }
+
             return TaskStatus.Running;
         }
 
@@ -54,6 +64,8 @@ public class Defend : Action{
     }
 
     private bool IsInSight() {
+
+        Debug.Log(target.Name);
 
         Vector3 toTarget = target.Value.position - transform.position;
         float angle = Vector3.Angle(transform.forward, toTarget);

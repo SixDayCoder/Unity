@@ -613,6 +613,7 @@
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedVector2.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedVector3.cs" />
     <Compile Include="Assets\Behavior Designer\Runtime\Variables\SharedVector4.cs" />
+    <Compile Include="Assets\CTFGameManager.cs" />
     <Compile Include="Assets\Scripts\Attacker\Attacker.cs" />
     <Compile Include="Assets\Scripts\Attacker\Task\IsHavingFlag.cs" />
     <Compile Include="Assets\Scripts\Defender\Task\Defend.cs" />
