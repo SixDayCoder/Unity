@@ -19,3 +19,4 @@
 * AssetBundle : 熟悉Unity5.3之后的AssetBunlde打包、解包、更新机制。
 * KnapSack : 实现了简单的背包系统,熟悉UGUI的事件监测等。
 * AI : 实现了各自Steering,熟悉Behaviour Designer
+* Shader: 熟悉Unity Shader.实现了一系列的shader
