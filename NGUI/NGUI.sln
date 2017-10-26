@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NGUI.CSharp", "NGUI.CSharp.csproj", "{80538A8C-A6A2-EBC2-2FB9-AA7D0A3784FF}"
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NGUI", "NGUI.csproj", "{9E3BC843-B354-4992-BE9B-5D65F71B815B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NGUI.CSharp.Editor", "NGUI.CSharp.Editor.csproj", "{40E053A9-2FE8-4CDF-C181-37A2EE1887AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NGUI.Editor", "NGUI.Editor.csproj", "{F2F85767-8476-109D-5455-EC09232441DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,14 +11,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{80538A8C-A6A2-EBC2-2FB9-AA7D0A3784FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80538A8C-A6A2-EBC2-2FB9-AA7D0A3784FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80538A8C-A6A2-EBC2-2FB9-AA7D0A3784FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80538A8C-A6A2-EBC2-2FB9-AA7D0A3784FF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{40E053A9-2FE8-4CDF-C181-37A2EE1887AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{40E053A9-2FE8-4CDF-C181-37A2EE1887AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{40E053A9-2FE8-4CDF-C181-37A2EE1887AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{40E053A9-2FE8-4CDF-C181-37A2EE1887AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E3BC843-B354-4992-BE9B-5D65F71B815B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E3BC843-B354-4992-BE9B-5D65F71B815B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E3BC843-B354-4992-BE9B-5D65F71B815B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E3BC843-B354-4992-BE9B-5D65F71B815B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2F85767-8476-109D-5455-EC09232441DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2F85767-8476-109D-5455-EC09232441DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2F85767-8476-109D-5455-EC09232441DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2F85767-8476-109D-5455-EC09232441DC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
